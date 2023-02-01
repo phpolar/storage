@@ -1,1 +1,1 @@
-# library-skeleton
+# PHPolar Library Skeleton
