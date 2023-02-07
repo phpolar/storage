@@ -352,8 +352,6 @@ return [
     // your application should be included in this list.
     'directory_list' => [
         'src',
-        'vendor/psr',
-        'vendor/phpolar',
     ],
 
     // A list of individual files to include in analysis
