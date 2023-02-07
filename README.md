@@ -13,10 +13,9 @@
 class KafkaStorage extends AbstractStorage
 {
     public function __construct(
-        WeakMap $map,
         // ...
     ) {
-        parent::__construct($map);
+        parent::__construct();
         // ...
     }
     // ...
