@@ -1,3 +1,9 @@
+## 0.4.0 (2023-02-09)
+
+### Feat
+
+- add support for different keys with the same value
+
 ## 0.3.0 (2023-02-09)
 
 ### Feat
