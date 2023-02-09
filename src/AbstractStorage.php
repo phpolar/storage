@@ -32,6 +32,14 @@ abstract class AbstractStorage
     }
 
     /**
+     * Persists the data.
+     *
+     * This can mean commiting a set of records
+     * to a database or saving data to a file.
+     */
+    public abstract function commit(): void;
+
+    /**
      * Returns the number of all stored items.
      */
     public function getCount(): int
