@@ -8,13 +8,21 @@ use Phpolar\Phpolar\Storage\Tests\Fakes\FakeModel;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
-use WeakMap;
 
 #[CoversClass(AbstractStorage::class)]
 #[CoversClass(ItemNotFound::class)]
 #[CoversClass(Item::class)]
 final class AbstractStorageTest extends TestCase
 {
+    protected function getStorageStub(): AbstractStorage
+    {
+        return new class() extends AbstractStorage {
+            public  function commit(): void
+            {
+                // no op
+            }
+        };
+    }
     #[TestDox("Shall allow for retrieving an item by key")]
     public function test1a()
     {
@@ -23,7 +31,7 @@ final class AbstractStorageTest extends TestCase
         $givenItem = new FakeModel();
         $givenItem->title = "TITLE";
         $givenItem->myInput = "something";
-        $sut = new class() extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $sut->storeByKey($givenKey, Item::unit($givenItem));
         $result = $sut->getByKey($givenKey);
         $this->assertInstanceOf(Item::class, $result);
@@ -38,8 +46,7 @@ final class AbstractStorageTest extends TestCase
         $givenItem = new FakeModel();
         $givenItem->title = "TITLE";
         $givenItem->myInput = "something";
-        $map = new WeakMap();
-        $sut = new class($map) extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $result = $sut->getByKey($givenKey);
         $this->assertInstanceOf(ItemNotFound::class, $result);
     }
@@ -56,7 +63,7 @@ final class AbstractStorageTest extends TestCase
         $key2 = new ItemKey(random_int(PHP_INT_MIN, PHP_INT_MAX));
         $key3 = new ItemKey(uniqid());
         $key4 = new ItemKey(uniqid());
-        $sut = new class() extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $sut->storeByKey($key1, Item::unit($item1));
         $sut->storeByKey($key2, Item::unit($item2));
         $sut->storeByKey($key3, Item::unit($item3));
@@ -72,7 +79,7 @@ final class AbstractStorageTest extends TestCase
     #[TestDox("Shall return an empty array when no items are stored and getAll is called")]
     public function test2b()
     {
-        $sut = new class() extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $storedItems = $sut->getAll();
         $this->assertEmpty($storedItems);
     }
@@ -84,7 +91,7 @@ final class AbstractStorageTest extends TestCase
         $givenItem = new FakeModel();
         $givenItem->title = "TITLE";
         $givenItem->myInput = "something";
-        $sut = new class() extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $sut->storeByKey($givenKey, Item::unit($givenItem));
         $result = $sut->getByKey($givenKey);
         $this->assertInstanceOf(Item::class, $result);
@@ -99,7 +106,7 @@ final class AbstractStorageTest extends TestCase
         $givenItem = new FakeModel();
         $givenItem->title = "TITLE";
         $givenItem->myInput = "something";
-        $sut = new class() extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $sut->storeByKey($givenKey, Item::unit($givenItem));
         $result = $sut->getByKey($givenKey);
         $this->assertInstanceOf(Item::class, $result);
@@ -121,7 +128,7 @@ final class AbstractStorageTest extends TestCase
         $key2 = new ItemKey(uniqid());
         $key3 = new ItemKey(uniqid());
         $key4 = new ItemKey(uniqid());
-        $sut = new class() extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $sut->storeByKey($key1, Item::unit($item1));
         $sut->storeByKey($key2, Item::unit($item2));
         $sut->storeByKey($key3, Item::unit($item3));
@@ -143,12 +150,56 @@ final class AbstractStorageTest extends TestCase
         $key2 = new ItemKey(uniqid());
         $key3 = new ItemKey(uniqid());
         $key4 = new ItemKey(uniqid());
-        $sut = new class() extends AbstractStorage {};
+        $sut = $this->getStorageStub();
         $sut->storeByKey($key1, Item::unit($item1));
         $sut->storeByKey($key2, Item::unit($item2));
         $sut->storeByKey($key3, Item::unit($item3));
         $sut->storeByKey($key4, Item::unit($item4));
         $result = $sut->getCount();
         $this->assertSame($expectedCount, $result);
+    }
+
+    #[TestDox("Shall allow for retrieving items by a key object with the same value as the original key")]
+    public function test7()
+    {
+        $givenItem = new FakeModel();
+        $keyAsString = uniqid();
+        $originalKey = new ItemKey($keyAsString);
+        $sameKey = new ItemKey($keyAsString);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($originalKey, Item::unit($givenItem));
+        $result = $sut->getByKey($sameKey)->bind();
+        $this->assertObjectEquals($givenItem, $result);
+    }
+
+    #[TestDox("Shall allow for replacing items by key")]
+    public function test8()
+    {
+        $givenItem = new FakeModel(uniqid(), uniqid());
+        $replacementItem = new FakeModel(uniqid(), uniqid());
+        $keyAsString = uniqid();
+        $key = new ItemKey($keyAsString);
+        $sameKey = new ItemKey($keyAsString);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($key, Item::unit($givenItem));
+        $stored = $sut->getByKey($key)->bind();
+        $this->assertObjectEquals($givenItem, $stored);
+        $sut->replaceByKey($sameKey, Item::unit($replacementItem));
+        $replaced = $sut->getByKey($sameKey)->bind();
+        $this->assertObjectEquals($replacementItem, $replaced);
+    }
+
+    #[TestDox("Shall allow for removing items by a key object with the same value as the original key")]
+    public function test9()
+    {
+        $givenItem = new FakeModel();
+        $keyAsString = uniqid();
+        $originalKey = new ItemKey($keyAsString);
+        $sameKey = new ItemKey($keyAsString);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($originalKey, Item::unit($givenItem));
+        $sut->removeByKey($sameKey);
+        $result = $sut->getByKey($sameKey);
+        $this->assertInstanceOf(ItemNotFound::class, $result);
     }
 }
