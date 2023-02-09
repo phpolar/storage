@@ -10,8 +10,9 @@ use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(AbstractStorage::class)]
-#[CoversClass(ItemNotFound::class)]
 #[CoversClass(Item::class)]
+#[CoversClass(ItemNotFound::class)]
+#[CoversClass(KeyNotFound::class)]
 final class AbstractStorageTest extends TestCase
 {
     protected function getStorageStub(): AbstractStorage
@@ -206,5 +207,104 @@ final class AbstractStorageTest extends TestCase
         $sut->removeByKey($sameKey);
         $result = $sut->getByKey($sameKey);
         $this->assertInstanceOf(ItemNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return the key of a stored object")]
+    public function test10()
+    {
+        $givenItem = Item::unit(new FakeModel());
+        $keyAsString = uniqid();
+        $givenKey = new ItemKey($keyAsString);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($givenKey, $givenItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertSame($keyAsString, (string) $result);
+    }
+
+    #[TestDox("Shall return the key of a stored object that does not implement the equals method")]
+    public function test11()
+    {
+        $givenItem = Item::unit((object) ["name" => "eric"]);
+        $keyAsString = uniqid();
+        $givenKey = new ItemKey($keyAsString);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($givenKey, $givenItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertSame($keyAsString, (string) $result);
+    }
+
+    #[TestDox("Shall return the key of a stored scalar value")]
+    public function test12()
+    {
+        $givenItem = Item::unit(2 ** 44);
+        $keyAsString = uniqid();
+        $givenKey = new ItemKey($keyAsString);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($givenKey, $givenItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertSame($keyAsString, (string) $result);
+    }
+
+    #[TestDox("Shall return instance of KeyNotFound when a given item does not exist in storage")]
+    public function test13()
+    {
+        $givenItem = Item::unit(new FakeModel());
+        $sut = $this->getStorageStub();
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return instance of KeyNotFound when an object that does not implement the equals method does not exist in storage")]
+    public function test14()
+    {
+        $givenItem = Item::unit((object) ["name" => "eric"]);
+        $sut = $this->getStorageStub();
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return instance of KeyNotFound when a scalar value does not exist in storage")]
+    public function test15()
+    {
+        $givenItem = Item::unit(2 ** 44);
+        $sut = $this->getStorageStub();
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return instance of KeyNotFound when a given item does not exist in storage")]
+    public function test13b()
+    {
+        $anotherItemKey = new ItemKey(uniqid());
+        $givenItem = Item::unit(new FakeModel());
+        $anotherItem = Item::unit(new FakeModel("another", "item"));
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($anotherItemKey, $anotherItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return instance of KeyNotFound when an object that does not implement the equals method does not exist in storage")]
+    public function test14b()
+    {
+        $anotherItemKey = new ItemKey(uniqid());
+        $givenItem = Item::unit((object) ["name" => "eric"]);
+        $anotherItem = Item::unit((object) ["name" => "someone else"]);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($anotherItemKey, $anotherItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return instance of KeyNotFound when a scalar value does not exist in storage")]
+    public function test15b()
+    {
+        $anotherItemKey = new ItemKey(uniqid());
+        $anotherItem = Item::unit(2 ** 43);
+        $givenItem = Item::unit(2 ** 44);
+        $sut = $this->getStorageStub();
+        $sut->storeByKey($anotherItemKey, $anotherItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
     }
 }
