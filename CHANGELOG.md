@@ -1,3 +1,9 @@
+## 0.3.0 (2023-02-09)
+
+### Feat
+
+- **AbstractStorage**: add commit method
+
 ## 0.2.0 (2023-02-07)
 
 ### Feat
