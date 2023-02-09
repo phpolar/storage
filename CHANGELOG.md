@@ -1,3 +1,9 @@
+## 0.6.1 (2023-02-09)
+
+### Refactor
+
+- **AbstractStorage**: use reflection properties instead of object iteration
+
 ## 0.6.0 (2023-02-09)
 
 ### Feat
