@@ -48,6 +48,12 @@ abstract class AbstractStorage
     public abstract function commit(): void;
 
     /**
+     * Loads persisted data into the internal data
+     * structure.
+     */
+    public abstract function load(): void;
+
+    /**
      * Returns the number of all stored items.
      */
     public function getCount(): int
