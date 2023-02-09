@@ -1,3 +1,9 @@
+## 0.6.0 (2023-02-09)
+
+### Feat
+
+- add support for finding a key of a given item
+
 ## 0.5.0 (2023-02-09)
 
 ### Feat
