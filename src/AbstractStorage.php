@@ -54,6 +54,34 @@ abstract class AbstractStorage
     public abstract function load(): void;
 
     /**
+     * Returns the key of an item.
+     */
+    public function findKey(Item $item): ItemKey|KeyNotFound
+    {
+        $itemValue = $item->bind();
+        foreach ($this->map as $key => $storedItem) {
+            $storedItemValue = $storedItem->bind();
+            if (is_object($storedItemValue) === true) {
+                if (method_exists($storedItemValue, "equals") === false) {
+                    foreach ($storedItemValue as $propName => $propValue) {
+                        if ($itemValue->$propName !== $propValue) {
+                            break 2;
+                        }
+                    }
+                    return $key;
+                }
+                if ($storedItemValue->equals($itemValue) === true) {
+                    return $key;
+                }
+            }
+            if ($storedItemValue === $itemValue) {
+                return $key;
+            }
+        }
+        return new KeyNotFound();
+    }
+
+    /**
      * Returns the number of all stored items.
      */
     public function getCount(): int
