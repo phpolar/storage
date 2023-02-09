@@ -18,6 +18,14 @@ abstract class AbstractStorage
      */
     private WeakMap $map;
 
+    /**
+     * Stores keys by their string representation
+     *
+     * @var array<string,ItemKey> $keyMap
+     */
+    private array $keyMap = [];
+
+
     public function __construct()
     {
         $this->map = new WeakMap();
@@ -52,7 +60,7 @@ abstract class AbstractStorage
      */
     public function getByKey(ItemKey $key): Item|ItemNotFound
     {
-        return $this->map[$key] ?? new ItemNotFound();
+        return $this->map[$this->keyMap[(string) $key] ?? $key] ?? new ItemNotFound();
     }
 
     /**
@@ -74,7 +82,8 @@ abstract class AbstractStorage
      */
     public function removeByKey(ItemKey $key): void
     {
-        unset($this->map[$key]);
+        unset($this->map[$this->keyMap[(string) $key] ?? $key]);
+        unset($this->keyMap[(string) $key]);
     }
 
     /**
@@ -82,6 +91,16 @@ abstract class AbstractStorage
      */
     public function storeByKey(ItemKey $key, Item $item): void
     {
+        $this->map[$key] = $item;
+        $this->keyMap[(string) $key] = $key;
+    }
+
+    /**
+     * Replaces an item by key.
+     */
+    public function replaceByKey(ItemKey $key, Item $item): void
+    {
+        $this->removeByKey($key);
         $this->map[$key] = $item;
     }
 }
