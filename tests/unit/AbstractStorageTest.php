@@ -21,6 +21,11 @@ final class AbstractStorageTest extends TestCase
             {
                 // no op
             }
+
+            public  function load(): void
+            {
+                // no op
+            }
         };
     }
     #[TestDox("Shall allow for retrieving an item by key")]
