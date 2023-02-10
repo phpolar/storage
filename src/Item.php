@@ -9,16 +9,8 @@ namespace Phpolar\Phpolar\Storage;
  */
 final class Item
 {
-    private function __construct(private mixed $item)
+    public function __construct(private mixed $item)
     {
-    }
-
-    /**
-     * Wraps an item.
-     */
-    public static function unit(mixed $item): Item
-    {
-        return new self($item);
     }
 
     /**

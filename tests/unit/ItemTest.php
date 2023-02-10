@@ -16,7 +16,7 @@ final class ItemTest extends TestCase
     public function test1()
     {
         $item = new FakeModel();
-        $wrapped = Item::unit($item);
+        $wrapped = new Item($item);
         $this->assertObjectEquals($item, $wrapped->bind());
     }
 }
