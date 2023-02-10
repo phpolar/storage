@@ -1,3 +1,9 @@
+## 1.0.0 (2023-02-09)
+
+### Feat
+
+- update test coverage badge
+
 ## 0.6.1 (2023-02-09)
 
 ### Refactor
