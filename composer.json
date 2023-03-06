@@ -55,8 +55,6 @@
         "semgrep": "semgrep --config auto -l php ./src",
         "smell": "phpmd ./src ansi design,cleancode,codesize,naming",
         "test": "phpunit --color=always",
-        "test:acceptance": "@test --configuration=phpunit.dev.xml --testsuite acceptance",
-        "test:acceptance:report": "@test --configuration=phpunit.dev.xml --testsuite acceptance --testdox-text acceptance-test-results.md",
         "test:benchmark": "@test --configuration=phpunit.dev.xml --testsuite benchmark",
         "test:unit": "@test --configuration=phpunit.dev.xml --testsuite unit",
         "test:coverage": "XDEBUG_MODE=coverage composer exec \"@test --configuration=phpunit.ci.xml --coverage-text --testsuite unit\"",
