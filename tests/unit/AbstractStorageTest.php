@@ -24,7 +24,7 @@ final class AbstractStorageTest extends TestCase
                 // no op
             }
 
-            public  function load(): void
+            protected  function load(): void
             {
                 // no op
             }
