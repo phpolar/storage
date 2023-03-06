@@ -6,6 +6,7 @@ namespace Phpolar\Phpolar\Storage;
 
 use Phpolar\Phpolar\Storage\Tests\Fakes\FakeModel;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +24,7 @@ final class AbstractStorageTest extends TestCase
                 // no op
             }
 
-            public  function load(): void
+            protected  function load(): void
             {
                 // no op
             }
@@ -57,7 +58,7 @@ final class AbstractStorageTest extends TestCase
         $this->assertInstanceOf(ItemNotFound::class, $result);
     }
 
-    #[TestDox("Shall allow for retrieve all items")]
+    #[TestDox("Shall allow for retrieving all items")]
     public function test2a()
     {
         $item1 = new FakeModel(uniqid(), uniqid());
@@ -222,6 +223,7 @@ final class AbstractStorageTest extends TestCase
     }
 
     #[TestDox("Shall return the key of a stored object that does not implement the equals method")]
+    #[Group("me")]
     public function test11()
     {
         $givenItem = new Item((object) ["name" => "eric"]);
@@ -304,6 +306,51 @@ final class AbstractStorageTest extends TestCase
         $givenItem = new Item(2 ** 44);
         $sut = $this->getStorageStub();
         $sut->storeByKey($anotherItemKey, $anotherItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return an instance of KeyNotFound when there are no values in storage")]
+    public function testa()
+    {
+        $sut = $this->getStorageStub();
+        $givenItem = new Item(2 ** 44);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return an instance of KeyNotFound when the stored item is empty")]
+    public function testb()
+    {
+        $key = new ItemKey(uniqid());
+        $sut = $this->getStorageStub();
+        $storedItem = new Item((object) []);
+        $givenItem = new Item((object) ["other" => "values"]);
+        $sut->storeByKey($key, $storedItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return an instance of KeyNotFound when the stored item and given item do not have the same number of properties")]
+    public function testc()
+    {
+        $key = new ItemKey(uniqid());
+        $sut = $this->getStorageStub();
+        $storedItem = new Item((object) ["a" => "prop"]);
+        $givenItem = new Item((object) ["a" => "prop", "another" => "prop"]);
+        $sut->storeByKey($key, $storedItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return an instance of KeyNotFound when the stored item and given item have the same values but different property names")]
+    public function testd()
+    {
+        $key = new ItemKey(uniqid());
+        $sut = $this->getStorageStub();
+        $storedItem = new Item((object) ["a" => "prop"]);
+        $givenItem = new Item((object) ["b" => "prop"]);
+        $sut->storeByKey($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
