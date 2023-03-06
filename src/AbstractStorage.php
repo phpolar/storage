@@ -29,6 +29,7 @@ abstract class AbstractStorage
     public function __construct()
     {
         $this->map = new WeakMap();
+        $this->load();
     }
 
     /**
