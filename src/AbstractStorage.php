@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Phpolar\Phpolar\Storage;
 
-use ReflectionObject;
 use WeakMap;
 
 /**
@@ -63,20 +62,18 @@ abstract class AbstractStorage
         foreach ($this->map as $key => $storedItem) {
             $storedItemValue = $storedItem->bind();
             if (is_object($storedItemValue) === true) {
-                if (method_exists($storedItemValue, "equals") === false) {
-                    $properties = (new ReflectionObject($storedItemValue))->getProperties();
-                    foreach ($properties as $property) {
-                        $propName = $property->getName();
-                        $propValue = $property->getValue($storedItemValue);
-                        if ($itemValue->$propName !== $propValue) {
-                            break 2;
-                        }
+                if (method_exists($storedItemValue, "equals") === true) {
+                    if ($storedItemValue->equals($itemValue) === true) {
+                        return $key;
                     }
+                    return new KeyNotFound();
+                }
+                $propsOfCurrent = get_object_vars($storedItemValue);
+                $propsToCheck = get_object_vars($itemValue);
+                if (count(array_intersect_assoc($propsOfCurrent, $propsToCheck)) === (count($propsOfCurrent) + count($propsToCheck)) / 2) {
                     return $key;
                 }
-                if ($storedItemValue->equals($itemValue) === true) {
-                    return $key;
-                }
+                return new KeyNotFound();
             }
             if ($storedItemValue === $itemValue) {
                 return $key;
