@@ -1,3 +1,9 @@
+## 1.2.0 (2023-03-05)
+
+### Feat
+
+- **AbstractStorage**: load when instance is created
+
 ## 1.1.0 (2023-03-05)
 
 ### Feat
