@@ -1,3 +1,14 @@
+## 1.1.0 (2023-03-05)
+
+### Feat
+
+- **AbstractStorage**: change visibility of `load` to protected
+- **check-for-object-and-update-config**: The ci builds were failing
+
+### Fix
+
+- **AbstractStorage**: improve key finding
+
 ## 1.0.1 (2023-02-12)
 
 ### Fix
