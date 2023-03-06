@@ -51,7 +51,7 @@ abstract class AbstractStorage
      * Loads persisted data into the internal data
      * structure.
      */
-    public abstract function load(): void;
+    protected abstract function load(): void;
 
     /**
      * Returns the key of an item.
