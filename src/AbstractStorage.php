@@ -61,7 +61,7 @@ abstract class AbstractStorage
         $itemValue = $item->bind();
         foreach ($this->map as $key => $storedItem) {
             $storedItemValue = $storedItem->bind();
-            if (is_object($storedItemValue) === true) {
+            if (is_object($storedItemValue) === true && is_object($itemValue) === true) {
                 if (method_exists($storedItemValue, "equals") === true) {
                     if ($storedItemValue->equals($itemValue) === true) {
                         return $key;

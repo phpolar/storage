@@ -24,7 +24,7 @@ final class AbstractStorageTest extends TestCase
                 // no op
             }
 
-            protected  function load(): void
+            public  function load(): void
             {
                 // no op
             }
@@ -350,6 +350,30 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $storedItem = new Item((object) ["a" => "prop"]);
         $givenItem = new Item((object) ["b" => "prop"]);
+        $sut->storeByKey($key, $storedItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return an instance of KeyNotFound when the given item is not an object but the stored item is an object")]
+    public function teste()
+    {
+        $key = new ItemKey(uniqid());
+        $sut = $this->getStorageStub();
+        $storedItem = new Item((object) ["a" => "prop"]);
+        $givenItem = new Item(["a" => "prop"]);
+        $sut->storeByKey($key, $storedItem);
+        $result = $sut->findKey($givenItem);
+        $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall return an instance of KeyNotFound when the stored item is not an object but the given item is an object")]
+    public function testf()
+    {
+        $key = new ItemKey(uniqid());
+        $sut = $this->getStorageStub();
+        $storedItem = new Item(["a" => "prop"]);
+        $givenItem = new Item((object) ["a" => "prop"]);
         $sut->storeByKey($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
