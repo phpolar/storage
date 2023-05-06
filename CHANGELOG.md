@@ -1,3 +1,9 @@
+## 1.2.2 (2023-05-05)
+
+### Fix
+
+- **AbstractStorage**: update key map when replacing items
+
 ## 1.2.1 (2023-04-30)
 
 ### Fix
