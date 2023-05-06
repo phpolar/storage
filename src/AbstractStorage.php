@@ -137,6 +137,6 @@ abstract class AbstractStorage
     public function replaceByKey(ItemKey $key, Item $item): void
     {
         $this->removeByKey($key);
-        $this->map[$key] = $item;
+        $this->storeByKey($key, $item);
     }
 }
