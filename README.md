@@ -3,7 +3,7 @@
 </p>
 
 # PHPolar Data Storage Abstraction
-[![Coverage Status](https://coveralls.io/repos/github/phpolar/phpolar-storage/badge.svg)](https://coveralls.io/github/phpolar/phpolar-storage) [![Latest Stable Version](http://poser.pugx.org/phpolar/phpolar-storage/v)](https://packagist.org/packages/phpolar/phpolar-storage) [![Total Downloads](http://poser.pugx.org/phpolar/phpolar-storage/downloads)](https://packagist.org/packages/phpolar/phpolar-storage) [![Latest Unstable Version](http://poser.pugx.org/phpolar/phpolar-storage/v/unstable)](https://packagist.org/packages/phpolar/phpolar-storage) [![License](http://poser.pugx.org/phpolar/phpolar-storage/license)](https://packagist.org/packages/phpolar/phpolar-storage) [![PHP Version Require](http://poser.pugx.org/phpolar/phpolar-storage/require/php)](https://packagist.org/packages/phpolar/phpolar-storage)
+[![Coverage Status](https://coveralls.io/repos/github/phpolar/storage/badge.svg)](https://coveralls.io/github/phpolar/storage) [![Latest Stable Version](http://poser.pugx.org/phpolar/storage/v)](https://packagist.org/packages/phpolar/storage) [![Total Downloads](http://poser.pugx.org/phpolar/storage/downloads)](https://packagist.org/packages/phpolar/storage) [![Latest Unstable Version](http://poser.pugx.org/phpolar/storage/v/unstable)](https://packagist.org/packages/phpolar/storage) [![License](http://poser.pugx.org/phpolar/storage/license)](https://packagist.org/packages/phpolar/storage) [![PHP Version Require](http://poser.pugx.org/phpolar/storage/require/php)](https://packagist.org/packages/phpolar/storage)
 ## Use to create persistence layer repositories, services, etc. with improved type safety.
 
 ## Usage
