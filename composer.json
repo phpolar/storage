@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "phpolar/phpolar-storage",
+    "name": "phpolar/storage",
     "description": "A convenient tool to speed up the creation of data storage for application development.",
     "type": "library",
     "require-dev": {
