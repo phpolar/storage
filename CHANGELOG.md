@@ -1,3 +1,13 @@
+## 2.0.0 (2023-07-03)
+
+### BREAKING CHANGE
+
+- `composer require phpolar/storage` instead of `composer require phpolar/phpolar-storage`
+
+### Refactor
+
+- rename project
+
 ## 1.2.2 (2023-05-05)
 
 ### Fix
