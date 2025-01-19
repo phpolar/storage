@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(AbstractStorage::class)]
 #[CoversClass(Item::class)]
+#[CoversClass(ItemFound::class)]
 #[CoversClass(ItemNotFound::class)]
 #[CoversClass(KeyNotFound::class)]
 final class AbstractStorageTest extends TestCase
@@ -41,7 +42,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $sut->storeByKey($givenKey, new Item($givenItem));
         $result = $sut->getByKey($givenKey);
-        $this->assertInstanceOf(Item::class, $result);
+        $this->assertInstanceOf(ItemFound::class, $result);
         $storedItem = $result->bind();
         $this->assertObjectEquals($givenItem, $storedItem);
     }
@@ -50,9 +51,6 @@ final class AbstractStorageTest extends TestCase
     public function test1b()
     {
         $givenKey = new ItemKey(uniqid());
-        $givenItem = new FakeModel();
-        $givenItem->title = "TITLE";
-        $givenItem->myInput = "something";
         $sut = $this->getStorageStub();
         $result = $sut->getByKey($givenKey);
         $this->assertInstanceOf(ItemNotFound::class, $result);
@@ -101,7 +99,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $sut->storeByKey($givenKey, new Item($givenItem));
         $result = $sut->getByKey($givenKey);
-        $this->assertInstanceOf(Item::class, $result);
+        $this->assertInstanceOf(ItemFound::class, $result);
         $storedItem = $result->bind();
         $this->assertObjectEquals($givenItem, $storedItem);
     }
@@ -116,7 +114,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $sut->storeByKey($givenKey, new Item($givenItem));
         $result = $sut->getByKey($givenKey);
-        $this->assertInstanceOf(Item::class, $result);
+        $this->assertInstanceOf(ItemFound::class, $result);
         $storedItem = $result->bind();
         $this->assertObjectEquals($givenItem, $storedItem);
         $sut->removeByKey($givenKey);

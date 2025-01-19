@@ -12,8 +12,8 @@ use RuntimeException;
 final class ItemNotFound
 {
     /**
-     * This method exists to unit this type
-     * with the Item type.
+     * This method exists to unite this type
+     * with the ItemFound type.
      *
      * An exception will be thrown if this method is called.
      * @throws RuntimeException

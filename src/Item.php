@@ -9,7 +9,7 @@ namespace Phpolar\Phpolar\Storage;
  */
 final class Item
 {
-    public function __construct(private mixed $item)
+    public function __construct(private readonly mixed $item)
     {
     }
 
