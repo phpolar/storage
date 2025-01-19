@@ -94,9 +94,10 @@ abstract class AbstractStorage
     /**
      * Retrieves an item by key.
      */
-    public function getByKey(ItemKey $key): Item|ItemNotFound
+    public function getByKey(ItemKey $key): ItemFound|ItemNotFound
     {
-        return $this->map[$this->keyMap[(string) $key] ?? $key] ?? new ItemNotFound();
+        $result = $this->map[$this->keyMap[(string) $key] ?? $key] ?? new ItemNotFound();
+        return $result instanceof ItemNotFound ? $result : new ItemFound($result);
     }
 
     /**

@@ -1,3 +1,13 @@
+## 3.0.0 (2025-01-18)
+
+### BREAKING CHANGE
+
+- AbstractStorage::getByKey now returns ItemFound instead of Item.
+
+### Feat
+
+- **AbstractStorage**: return item found type
+
 ## 2.0.0 (2023-07-03)
 
 ### BREAKING CHANGE
