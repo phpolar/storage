@@ -1,3 +1,9 @@
+## 3.1.0 (2025-03-20)
+
+### Fix
+
+- use php 8.3 or greater
+
 ## 3.0.0 (2025-01-18)
 
 ### BREAKING CHANGE
