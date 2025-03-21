@@ -1,4 +1,4 @@
-name: Auto merge PHPstan
+name: Auto merge PHPUnit
 on:
   pull_request:
     branches: [ main ]
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
     if: |
       (github.event.pull_request.user.login == 'dependabot[bot]' || github.actor == 'dependabot[bot]') &&
-      contains(github.event.pull_request.title, 'bump phpstan')
+      contains(github.event.pull_request.title, 'bump phpunit')
     steps:
       - uses: actions/checkout@v4
       - name: Setup PHP
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: composer update --no-ansi --no-interaction --prefer-dist --no-progress --ignore-platform-req=ext-ast && composer dumpautoload
       - name: PR check
-        run: composer ci:analyze
+        run: composer ci:test
       - name: Dependabot metadata
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v2.3.0
