@@ -26,7 +26,6 @@ jobs:
       run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
     - name: Cache Composer packages
-      id: composer-cache
       uses: actions/cache@v4
       with:
         path: vendor
