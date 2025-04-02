@@ -2,7 +2,7 @@ name: Prod Upgrade Release
 
 on:
   schedule:
-    - cron: '23 23 * * 0'
+    - cron: '5 2 * * 3'
 
 jobs:
   prod_upgrade_release:
@@ -11,6 +11,7 @@ jobs:
       DEP_UPGRADE_TYPE: direct:production
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Create release when prod deps upgraded
         run: |
           LATEST_TAG="$(git describe --tags --abbrev=0)"
