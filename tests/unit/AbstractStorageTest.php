@@ -40,8 +40,8 @@ final class AbstractStorageTest extends TestCase
         $givenItem->title = "TITLE";
         $givenItem->myInput = "something";
         $sut = $this->getStorageStub();
-        $sut->storeByKey($givenKey, new Item($givenItem));
-        $result = $sut->getByKey($givenKey);
+        $sut->save($givenKey, new Item($givenItem));
+        $result = $sut->getOne($givenKey);
         $this->assertInstanceOf(ItemFound::class, $result);
         $storedItem = $result->bind();
         $this->assertObjectEquals($givenItem, $storedItem);
@@ -52,7 +52,7 @@ final class AbstractStorageTest extends TestCase
     {
         $givenKey = new ItemKey(uniqid());
         $sut = $this->getStorageStub();
-        $result = $sut->getByKey($givenKey);
+        $result = $sut->getOne($givenKey);
         $this->assertInstanceOf(ItemNotFound::class, $result);
     }
 
@@ -69,10 +69,10 @@ final class AbstractStorageTest extends TestCase
         $key3 = new ItemKey(uniqid());
         $key4 = new ItemKey(uniqid());
         $sut = $this->getStorageStub();
-        $sut->storeByKey($key1, new Item($item1));
-        $sut->storeByKey($key2, new Item($item2));
-        $sut->storeByKey($key3, new Item($item3));
-        $sut->storeByKey($key4, new Item($item4));
+        $sut->save($key1, new Item($item1));
+        $sut->save($key2, new Item($item2));
+        $sut->save($key3, new Item($item3));
+        $sut->save($key4, new Item($item4));
         $storedItems = $sut->getAll();
         array_map(
             $this->assertObjectEquals(...),
@@ -97,8 +97,8 @@ final class AbstractStorageTest extends TestCase
         $givenItem->title = "TITLE";
         $givenItem->myInput = "something";
         $sut = $this->getStorageStub();
-        $sut->storeByKey($givenKey, new Item($givenItem));
-        $result = $sut->getByKey($givenKey);
+        $sut->save($givenKey, new Item($givenItem));
+        $result = $sut->getOne($givenKey);
         $this->assertInstanceOf(ItemFound::class, $result);
         $storedItem = $result->bind();
         $this->assertObjectEquals($givenItem, $storedItem);
@@ -112,13 +112,13 @@ final class AbstractStorageTest extends TestCase
         $givenItem->title = "TITLE";
         $givenItem->myInput = "something";
         $sut = $this->getStorageStub();
-        $sut->storeByKey($givenKey, new Item($givenItem));
-        $result = $sut->getByKey($givenKey);
+        $sut->save($givenKey, new Item($givenItem));
+        $result = $sut->getOne($givenKey);
         $this->assertInstanceOf(ItemFound::class, $result);
         $storedItem = $result->bind();
         $this->assertObjectEquals($givenItem, $storedItem);
-        $sut->removeByKey($givenKey);
-        $result = $sut->getByKey($givenKey);
+        $sut->remove($givenKey);
+        $result = $sut->getOne($givenKey);
         $this->assertInstanceOf(ItemNotFound::class, $result);
     }
 
@@ -134,10 +134,10 @@ final class AbstractStorageTest extends TestCase
         $key3 = new ItemKey(uniqid());
         $key4 = new ItemKey(uniqid());
         $sut = $this->getStorageStub();
-        $sut->storeByKey($key1, new Item($item1));
-        $sut->storeByKey($key2, new Item($item2));
-        $sut->storeByKey($key3, new Item($item3));
-        $sut->storeByKey($key4, new Item($item4));
+        $sut->save($key1, new Item($item1));
+        $sut->save($key2, new Item($item2));
+        $sut->save($key3, new Item($item3));
+        $sut->save($key4, new Item($item4));
         $sut->clear();
         $storedItems = $sut->getAll();
         $this->assertEmpty($storedItems);
@@ -156,10 +156,10 @@ final class AbstractStorageTest extends TestCase
         $key3 = new ItemKey(uniqid());
         $key4 = new ItemKey(uniqid());
         $sut = $this->getStorageStub();
-        $sut->storeByKey($key1, new Item($item1));
-        $sut->storeByKey($key2, new Item($item2));
-        $sut->storeByKey($key3, new Item($item3));
-        $sut->storeByKey($key4, new Item($item4));
+        $sut->save($key1, new Item($item1));
+        $sut->save($key2, new Item($item2));
+        $sut->save($key3, new Item($item3));
+        $sut->save($key4, new Item($item4));
         $result = $sut->getCount();
         $this->assertSame($expectedCount, $result);
     }
@@ -172,8 +172,8 @@ final class AbstractStorageTest extends TestCase
         $originalKey = new ItemKey($keyAsString);
         $sameKey = new ItemKey($keyAsString);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($originalKey, new Item($givenItem));
-        $result = $sut->getByKey($sameKey)->bind();
+        $sut->save($originalKey, new Item($givenItem));
+        $result = $sut->getOne($sameKey)->bind();
         $this->assertObjectEquals($givenItem, $result);
     }
 
@@ -186,11 +186,11 @@ final class AbstractStorageTest extends TestCase
         $key = new ItemKey($keyAsString);
         $sameKey = new ItemKey($keyAsString);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($key, new Item($givenItem));
-        $stored = $sut->getByKey($key)->bind();
+        $sut->save($key, new Item($givenItem));
+        $stored = $sut->getOne($key)->bind();
         $this->assertObjectEquals($givenItem, $stored);
-        $sut->replaceByKey($sameKey, new Item($replacementItem));
-        $replaced = $sut->getByKey($sameKey)->bind();
+        $sut->replace($sameKey, new Item($replacementItem));
+        $replaced = $sut->getOne($sameKey)->bind();
         $this->assertObjectEquals($replacementItem, $replaced);
     }
 
@@ -202,9 +202,9 @@ final class AbstractStorageTest extends TestCase
         $originalKey = new ItemKey($keyAsString);
         $sameKey = new ItemKey($keyAsString);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($originalKey, new Item($givenItem));
-        $sut->removeByKey($sameKey);
-        $result = $sut->getByKey($sameKey);
+        $sut->save($originalKey, new Item($givenItem));
+        $sut->remove($sameKey);
+        $result = $sut->getOne($sameKey);
         $this->assertInstanceOf(ItemNotFound::class, $result);
     }
 
@@ -215,7 +215,7 @@ final class AbstractStorageTest extends TestCase
         $keyAsString = uniqid();
         $givenKey = new ItemKey($keyAsString);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($givenKey, $givenItem);
+        $sut->save($givenKey, $givenItem);
         $result = $sut->findKey($givenItem);
         $this->assertSame($keyAsString, (string) $result);
     }
@@ -228,7 +228,7 @@ final class AbstractStorageTest extends TestCase
         $keyAsString = uniqid();
         $givenKey = new ItemKey($keyAsString);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($givenKey, $givenItem);
+        $sut->save($givenKey, $givenItem);
         $result = $sut->findKey($givenItem);
         $this->assertSame($keyAsString, (string) $result);
     }
@@ -240,7 +240,7 @@ final class AbstractStorageTest extends TestCase
         $keyAsString = uniqid();
         $givenKey = new ItemKey($keyAsString);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($givenKey, $givenItem);
+        $sut->save($givenKey, $givenItem);
         $result = $sut->findKey($givenItem);
         $this->assertSame($keyAsString, (string) $result);
     }
@@ -279,7 +279,7 @@ final class AbstractStorageTest extends TestCase
         $givenItem = new Item(new FakeModel());
         $anotherItem = new Item(new FakeModel("another", "item"));
         $sut = $this->getStorageStub();
-        $sut->storeByKey($anotherItemKey, $anotherItem);
+        $sut->save($anotherItemKey, $anotherItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
@@ -291,7 +291,7 @@ final class AbstractStorageTest extends TestCase
         $givenItem = new Item((object) ["name" => "eric"]);
         $anotherItem = new Item((object) ["name" => "someone else"]);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($anotherItemKey, $anotherItem);
+        $sut->save($anotherItemKey, $anotherItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
@@ -303,7 +303,7 @@ final class AbstractStorageTest extends TestCase
         $anotherItem = new Item(2 ** 43);
         $givenItem = new Item(2 ** 44);
         $sut = $this->getStorageStub();
-        $sut->storeByKey($anotherItemKey, $anotherItem);
+        $sut->save($anotherItemKey, $anotherItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
@@ -324,7 +324,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $storedItem = new Item((object) []);
         $givenItem = new Item((object) ["other" => "values"]);
-        $sut->storeByKey($key, $storedItem);
+        $sut->save($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
@@ -336,7 +336,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $storedItem = new Item((object) ["a" => "prop"]);
         $givenItem = new Item((object) ["a" => "prop", "another" => "prop"]);
-        $sut->storeByKey($key, $storedItem);
+        $sut->save($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
@@ -348,7 +348,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $storedItem = new Item((object) ["a" => "prop"]);
         $givenItem = new Item((object) ["b" => "prop"]);
-        $sut->storeByKey($key, $storedItem);
+        $sut->save($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
@@ -360,7 +360,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $storedItem = new Item((object) ["a" => "prop"]);
         $givenItem = new Item(["a" => "prop"]);
-        $sut->storeByKey($key, $storedItem);
+        $sut->save($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }
@@ -372,7 +372,7 @@ final class AbstractStorageTest extends TestCase
         $sut = $this->getStorageStub();
         $storedItem = new Item(["a" => "prop"]);
         $givenItem = new Item((object) ["a" => "prop"]);
-        $sut->storeByKey($key, $storedItem);
+        $sut->save($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
     }

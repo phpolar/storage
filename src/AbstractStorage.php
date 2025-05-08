@@ -94,7 +94,7 @@ abstract class AbstractStorage
     /**
      * Retrieves an item by key.
      */
-    public function getByKey(ItemKey $key): ItemFound|ItemNotFound
+    public function getOne(ItemKey $key): ItemFound|ItemNotFound
     {
         $result = $this->map[$this->keyMap[(string) $key] ?? $key] ?? new ItemNotFound();
         return $result instanceof ItemNotFound ? $result : new ItemFound($result);
@@ -117,7 +117,7 @@ abstract class AbstractStorage
     /**
      * Removes an item associated with the given key.
      */
-    public function removeByKey(ItemKey $key): void
+    public function remove(ItemKey $key): void
     {
         unset($this->map[$this->keyMap[(string) $key] ?? $key]);
         unset($this->keyMap[(string) $key]);
@@ -126,7 +126,7 @@ abstract class AbstractStorage
     /**
      * Stores an item by key.
      */
-    public function storeByKey(ItemKey $key, Item $item): void
+    public function save(ItemKey $key, Item $item): void
     {
         $this->map[$key] = $item;
         $this->keyMap[(string) $key] = $key;
@@ -135,9 +135,9 @@ abstract class AbstractStorage
     /**
      * Replaces an item by key.
      */
-    public function replaceByKey(ItemKey $key, Item $item): void
+    public function replace(ItemKey $key, Item $item): void
     {
-        $this->removeByKey($key);
-        $this->storeByKey($key, $item);
+        $this->remove($key);
+        $this->save($key, $item);
     }
 }
