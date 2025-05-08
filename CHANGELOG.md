@@ -1,3 +1,15 @@
+## 4.0.0 (2025-05-07)
+
+### Feat
+
+- shorten method names
+
+## 3.1.1 (2025-04-16)
+
+### Fix
+
+- add workflow permissions
+
 ## 3.1.0 (2025-03-20)
 
 ### Fix
