@@ -24,15 +24,15 @@ class KafkaStorage extends AbstractStorage
 
 $key0 = new ItemKey(uniqid());
 
-$kafkaStorage->storeByKey($key0, $data);
+$kafkaStorage->save($key0, $data);
 
-$item0 = $kafkaStorage->getByKey($key0);
+$item0 = $kafkaStorage->getOne($key0);
 
 $numItems = $kafkaStorage->count();
 
 $allItems = $kafkaStorage->getAll();
 
-$kafka->removeByKey($key0);
+$kafka->remove($key0);
 
 $kafka->clear();
 
