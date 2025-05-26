@@ -6,7 +6,6 @@ namespace Phpolar\Phpolar\Storage;
 
 use Phpolar\Phpolar\Storage\LifeCycleHooks;
 use Phpolar\Phpolar\Storage\Tests\Fakes\FakeModel;
-use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;
@@ -17,7 +16,6 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ItemFound::class)]
 #[CoversClass(ItemNotFound::class)]
 #[CoversClass(KeyNotFound::class)]
-#[CoversClass(LifeCycleHooks::class)]
 final class AbstractStorageTest extends TestCase
 {
     protected function getStorageStub(): AbstractStorage
