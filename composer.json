@@ -1,69 +1,69 @@
 {
-    "$schema": "https://getcomposer.org/schema.json",
-    "name": "phpolar/storage",
-    "description": "A convenient tool to speed up the creation of data storage for application development.",
-    "type": "library",
-    "require-dev": {
-        "ext-ast": "*",
-        "ext-openssl": "*",
-        "phan/phan": "^5.4",
-        "php-coveralls/php-coveralls": "^2.7.0",
-        "phpmd/phpmd": "^2.15.0",
-        "phpstan/phpstan": "^1.9 || ^2.0",
-        "phpunit/phpunit": "^11.4.4 || ^12.0.0",
-        "squizlabs/php_codesniffer": "^3.11.1"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "autoload": {
-        "psr-4": {
-            "Phpolar\\Phpolar\\Storage\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Phpolar\\Phpolar\\Storage\\Tests\\Fakes\\": "tests/__fakes__"
-        }
-    },
-    "require": {
-        "php": ">=8.3"
-    },
-    "license": "MIT",
-    "scripts": {
-        "analyze": "XDEBUG_MODE=off phpstan analyze src --level 9",
-        "analyze:strict": "phan --no-progress-bar --strict-type-checking --analyze-twice --color --output-mode=text --color-scheme=light",
-        "analyze:dead-code": "@analyze:strict --color-scheme=light --config-file=.phan/config_deadcode.php",
-        "check": [
-            "@lint -q",
-            "@analyze -q",
-            "@test:unit",
-            "@semgrep",
-            "@smell"
-        ],
-        "ci:analyze": "composer exec \"@analyze\"",
-        "ci:lint": "composer exec \"@lint\"",
-        "ci:lint-fix": "composer exec \"@lint-fix\"",
-        "ci:test": "XDEBUG_MODE=coverage composer exec \"@test --configuration=phpunit.ci.xml --coverage-clover=build/logs/clover.xml\"",
-        "ci:test-build": "composer exec \"@test --configuration=phpunit.ci.xml\"",
-        "ci:generate-coverage-badge": "composer exec \"php-coveralls -v\"",
-        "docs:generate": "composer exec \"docker run --rm -v \"$(pwd):/data\" \"phpdoc/phpdoc:3\" --setting graphs.enabled=true\"",
-        "lint": "phpcs",
-        "lint-fix": "phpcbf",
-        "start:test": [
-            "Composer\\Config::disableProcessTimeout",
-            "watch -n 30 -cx vendor/bin/phpunit --color=always --testsuite unit"
-        ],
-        "semgrep": "semgrep --config auto -l php ./src",
-        "smell": "phpmd ./src ansi design,cleancode,codesize,naming",
-        "test": "phpunit --color=always",
-        "test:unit": "@test --configuration=phpunit.dev.xml --testsuite unit",
-        "test:coverage": "XDEBUG_MODE=coverage composer exec \"@test --configuration=phpunit.ci.xml --coverage-text --testsuite unit\"",
-        "xdebug:on": [
-            "TEMP_FILE=\"$(sed --follow-symlink -E 's/^;(zend_extension=xdebug)/\\1/' \"$(php-config --ini-dir)/20-xdebug.ini\")\"; echo \"$TEMP_FILE\" > \"$(php-config --ini-dir)/20-xdebug.ini\""
-        ],
-        "xdebug:off": [
-            "TEMP_FILE=\"$(sed --follow-symlink -E 's/^(zend_extension=xdebug)/;\\1/' \"$(php-config --ini-dir)/20-xdebug.ini\")\"; echo \"$TEMP_FILE\" > \"$(php-config --ini-dir)/20-xdebug.ini\""
-        ]
+  "$schema": "https://getcomposer.org/schema.json",
+  "name": "phpolar/storage",
+  "description": "A convenient tool to speed up the creation of data storage for application development.",
+  "type": "library",
+  "require-dev": {
+    "ext-ast": "*",
+    "ext-openssl": "*",
+    "phan/phan": "^5.4",
+    "php-coveralls/php-coveralls": "^2.7.0",
+    "phpmd/phpmd": "^2.15.0",
+    "phpstan/phpstan": "^1.9 || ^2.0",
+    "phpunit/phpunit": "^11.4.4 || ^12.0.0",
+    "squizlabs/php_codesniffer": "^3.11.1"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Phpolar\\Phpolar\\Storage\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Phpolar\\Phpolar\\Storage\\Tests\\Fakes\\": "tests/__fakes__"
+    }
+  },
+  "require": {
+    "php": ">=8.3"
+  },
+  "license": "MIT",
+  "scripts": {
+    "analyze": "XDEBUG_MODE=off phpstan analyze src --level 9",
+    "analyze:strict": "phan --no-progress-bar --strict-type-checking --analyze-twice --color --output-mode=text --color-scheme=light",
+    "analyze:dead-code": "@analyze:strict --color-scheme=light --config-file=.phan/config_deadcode.php",
+    "check": [
+      "@lint -q",
+      "@analyze -q",
+      "@test:unit",
+      "@semgrep",
+      "@smell"
+    ],
+    "ci:analyze": "composer exec \"@analyze\"",
+    "ci:lint": "composer exec \"@lint\"",
+    "ci:lint-fix": "composer exec \"@lint-fix\"",
+    "ci:test": "XDEBUG_MODE=coverage composer exec \"@test --configuration=phpunit.ci.xml --coverage-clover=build/logs/clover.xml\"",
+    "ci:test-build": "composer exec \"@test --configuration=phpunit.ci.xml\"",
+    "ci:generate-coverage-badge": "composer exec \"php-coveralls -v\"",
+    "docs:generate": "composer exec \"docker run --rm -v \"$(pwd):/data\" \"phpdoc/phpdoc:3\" --setting graphs.enabled=true\"",
+    "lint": "phpcs",
+    "lint-fix": "phpcbf",
+    "start:test": [
+      "Composer\\Config::disableProcessTimeout",
+      "watch -n 5 -cx composer exec phpunit -- --configuration=phpunit.dev.xml --color=always --testsuite unit"
+    ],
+    "semgrep": "semgrep --config auto -l php ./src",
+    "smell": "phpmd ./src ansi design,cleancode,codesize,naming",
+    "test": "phpunit --color=always",
+    "test:unit": "@test --configuration=phpunit.dev.xml --testsuite unit",
+    "test:coverage": "XDEBUG_MODE=coverage composer exec \"@test --configuration=phpunit.ci.xml --coverage-text --testsuite unit\"",
+    "xdebug:on": [
+      "TEMP_FILE=\"$(sed --follow-symlink -E 's/^;(zend_extension=xdebug)/\\1/' \"$(php-config --ini-dir)/20-xdebug.ini\")\"; echo \"$TEMP_FILE\" > \"$(php-config --ini-dir)/20-xdebug.ini\""
+    ],
+    "xdebug:off": [
+      "TEMP_FILE=\"$(sed --follow-symlink -E 's/^(zend_extension=xdebug)/;\\1/' \"$(php-config --ini-dir)/20-xdebug.ini\")\"; echo \"$TEMP_FILE\" > \"$(php-config --ini-dir)/20-xdebug.ini\""
+    ]
+  }
 }

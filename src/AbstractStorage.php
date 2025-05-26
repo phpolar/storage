@@ -4,31 +4,24 @@ declare(strict_types=1);
 
 namespace Phpolar\Phpolar\Storage;
 
-use WeakMap;
+use Countable;
 
 /**
  * Represents a persistence layer.
+ *
+ * @implements StorageContext<mixed>
  */
-abstract class AbstractStorage
+abstract class AbstractStorage implements StorageContext, Countable
 {
     /**
      * Internal storage data structure.
      *
-     * @var WeakMap<ItemKey,Item> $map
+     * @var array<string|int,mixed> $map
      */
-    private WeakMap $map;
-
-    /**
-     * Stores keys by their string representation
-     *
-     * @var array<string,ItemKey> $keyMap
-     */
-    private array $keyMap = [];
-
+    private array $map = [];
 
     public function __construct(private readonly LifeCycleHooks $hooks)
     {
-        $this->map = new WeakMap();
         $this->hooks->onInit();
     }
 
@@ -42,32 +35,24 @@ abstract class AbstractStorage
      */
     public function clear(): void
     {
-        $this->map = new WeakMap();
+        $this->map = [];
     }
 
     /**
      * Returns the key of an item.
      */
-    public function findKey(Item $item): ItemKey|KeyNotFound
+    public function findKey(mixed $item): string|int|KeyNotFound
     {
-        $itemValue = $item->bind();
         foreach ($this->map as $key => $storedItem) {
-            $storedItemValue = $storedItem->bind();
-            if (is_object($storedItemValue) === true && is_object($itemValue) === true) {
-                if (method_exists($storedItemValue, "equals") === true) {
-                    if ($storedItemValue->equals($itemValue) === true) {
-                        return $key;
-                    }
-                    return new KeyNotFound();
-                }
-                $propsOfCurrent = get_object_vars($storedItemValue);
-                $propsToCheck = get_object_vars($itemValue);
+            if (is_object($storedItem) === true && is_object($item) === true) {
+                $propsOfCurrent = get_object_vars($storedItem);
+                $propsToCheck = get_object_vars($item);
                 if (count(array_intersect_assoc($propsOfCurrent, $propsToCheck)) === (count($propsOfCurrent) + count($propsToCheck)) / 2) {
                     return $key;
                 }
                 return new KeyNotFound();
             }
-            if ($storedItemValue === $itemValue) {
+            if ($storedItem === $item) {
                 return $key;
             }
         }
@@ -77,58 +62,57 @@ abstract class AbstractStorage
     /**
      * Returns the number of all stored items.
      */
-    public function getCount(): int
+    public function count(): int
     {
         return count($this->map);
     }
 
     /**
-     * Retrieves an item by key.
+     * {@inheritDoc}
+     *
+     * @SuppressWarnings(PHPMD)
      */
-    public function getOne(ItemKey $key): ItemFound|ItemNotFound
+    public function find(string|int $key): Result
     {
-        $result = $this->map[$this->keyMap[(string) $key] ?? $key] ?? new ItemNotFound();
-        return $result instanceof ItemNotFound ? $result : new ItemFound($result);
+        if (array_key_exists($key, $this->map) === false) {
+            return Result::notFound();
+        }
+        return Result::wrap($this->map[$key]);
     }
 
-    /**
-     * Retrieves all stored items.
-     *
-     * @return mixed[]
-     */
-    public function getAll(): array
+    public function findAll(): array
     {
         $arr = [];
         foreach ($this->map as $item) {
-            $arr[] = $item->bind();
+            $arr[] = $item;
         }
         return $arr;
     }
 
     /**
-     * Removes an item associated with the given key.
+     * {@inheritDoc}
+     *
+     * @SuppressWarnings(PHPMD)
      */
-    public function remove(ItemKey $key): void
+    public function remove(string|int $key): Result
     {
-        unset($this->map[$this->keyMap[(string) $key] ?? $key]);
-        unset($this->keyMap[(string) $key]);
+        if (array_key_exists($key, $this->map) === false) {
+            return Result::notFound();
+        }
+        $result = Result::wrap($this->map[$key]);
+        unset($this->map[$key]);
+        return $result;
     }
 
-    /**
-     * Stores an item by key.
-     */
-    public function save(ItemKey $key, Item $item): void
+    public function save(string|int $key, mixed $data): void
     {
-        $this->map[$key] = $item;
-        $this->keyMap[(string) $key] = $key;
+        $this->map[$key] = $data;
     }
 
-    /**
-     * Replaces an item by key.
-     */
-    public function replace(ItemKey $key, Item $item): void
+    public function replace(string|int $key, mixed $data): mixed
     {
         $this->remove($key);
-        $this->save($key, $item);
+        $this->save($key, $data);
+        return $data;
     }
 }
