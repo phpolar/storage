@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Phpolar\Phpolar\Storage;
 
+use Phpolar\Phpolar\Storage\LifeCycleHooks;
 use Phpolar\Phpolar\Storage\Tests\Fakes\FakeModel;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
@@ -19,16 +20,8 @@ final class AbstractStorageTest extends TestCase
 {
     protected function getStorageStub(): AbstractStorage
     {
-        return new class() extends AbstractStorage {
-            public  function commit(): void
-            {
-                // no op
-            }
-
-            protected  function load(): void
-            {
-                // no op
-            }
+        $lifeCycleHooksStub = $this->createStub(LifeCycleHooks::class);
+        return new class($lifeCycleHooksStub) extends AbstractStorage {
         };
     }
     #[TestDox("Shall allow for retrieving an item by key")]
@@ -375,5 +368,34 @@ final class AbstractStorageTest extends TestCase
         $sut->save($key, $storedItem);
         $result = $sut->findKey($givenItem);
         $this->assertInstanceOf(KeyNotFound::class, $result);
+    }
+
+    #[TestDox("Shall call onInit of the given life cycle hooks when created")]
+    public function testg()
+    {
+        $spy = $this->createMock(LifeCycleHooks::class);
+
+        $spy->expects($this->once())->method("onInit");
+
+        new class ($spy) extends AbstractStorage
+        {
+        };
+    }
+
+    #[TestDox("Shall call onDestroy of the given life cycle hooks when destroyed")]
+    public function testh()
+    {
+        $spy = $this->createMock(LifeCycleHooks::class);
+
+        $spy->expects($this->once())->method("onDestroy");
+
+        $a = new class ($spy) extends AbstractStorage
+        {
+        };
+
+        /**
+         * call destructor
+         */
+        $a = null;
     }
 }
