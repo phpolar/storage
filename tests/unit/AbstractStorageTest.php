@@ -379,7 +379,8 @@ final class AbstractStorageTest extends TestCase
 
         $spy->expects($this->once())->method("onInit");
 
-        new class ($spy) extends AbstractStorage {
+        new class ($spy) extends AbstractStorage
+        {
 
         };
     }
@@ -391,7 +392,8 @@ final class AbstractStorageTest extends TestCase
 
         $spy->expects($this->once())->method("onDestroy");
 
-        $a = new class ($spy) extends AbstractStorage {
+        $a = new class ($spy) extends AbstractStorage
+        {
 
         };
 
