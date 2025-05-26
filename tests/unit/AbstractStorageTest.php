@@ -381,7 +381,6 @@ final class AbstractStorageTest extends TestCase
 
         new class ($spy) extends AbstractStorage
         {
-
         };
     }
 
@@ -394,7 +393,6 @@ final class AbstractStorageTest extends TestCase
 
         $a = new class ($spy) extends AbstractStorage
         {
-
         };
 
         /**
