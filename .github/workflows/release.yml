@@ -1,0 +1,10 @@
+name: Deploy Documentation
+on:
+  release:
+    types: [released]
+permissions:
+  contents: write
+jobs:
+  deploy_docs:
+    uses: phpolar/github-workflows/.github/workflows/deploy-docs.yml@v1
+    secrets: inherit
