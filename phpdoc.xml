@@ -8,6 +8,7 @@
     <use-cache>false</use-cache>
     <paths>
         <output>docs</output>
+        <cache>/tmp/.phpdoc/build/cache</cache>
     </paths>
     <version number="5.0.0">
         <api format="php">
