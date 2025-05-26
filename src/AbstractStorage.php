@@ -26,10 +26,15 @@ abstract class AbstractStorage
     private array $keyMap = [];
 
 
-    public function __construct()
+    public function __construct(private readonly LifeCycleHooks $hooks)
     {
         $this->map = new WeakMap();
-        $this->load();
+        $this->hooks->onInit();
+    }
+
+    public function __destruct()
+    {
+        $this->hooks->onDestroy();
     }
 
     /**
@@ -39,20 +44,6 @@ abstract class AbstractStorage
     {
         $this->map = new WeakMap();
     }
-
-    /**
-     * Persists the data.
-     *
-     * This can mean commiting a set of records
-     * to a database or saving data to a file.
-     */
-    public abstract function commit(): void;
-
-    /**
-     * Loads persisted data into the internal data
-     * structure.
-     */
-    protected abstract function load(): void;
 
     /**
      * Returns the key of an item.
