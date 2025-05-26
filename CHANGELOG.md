@@ -1,3 +1,14 @@
+## 5.0.0 (2025-05-26)
+
+### BREAKING CHANGE
+
+- AbstractStorage all methods. Item, ItemKey, ItemFound and ItemNotFound have been removed. Result object and StorageContext have been added.
+
+### Feat
+
+- overhaul api (#79)
+- **AbstractStorage**: add life-cycle hooks (#78)
+
 ## 4.0.0 (2025-05-07)
 
 ### Feat
