@@ -7,12 +7,26 @@
 >
   <paths>
     <output>docs</output>
-    <cache>.phpdoc/build/cache</cache>
+    <cache>/tmp/.phpdoc/build/cache</cache>
   </paths>
-  <version number="5.1.0">
-    <api format="php">
+  <version number="5.0.0">
+    <api ignore-packages="true" format="php">
       <source dsn="./src"></source>
+      <output>api</output>
+      <ignore hidden="true" symlinks="true">
+        <path>tests/**/*</path>
+        <path>vendor/**/*</path>
+      </ignore>
+      <default-package-name>PhpolarStorage</default-package-name>
       <visibility>public</visibility>
+      <ignore-tags>
+        <ignore-tag>template</ignore-tag>
+        <ignore-tag>template-extends</ignore-tag>
+        <ignore-tag>template-implements</ignore-tag>
+        <ignore-tag>extends</ignore-tag>
+        <ignore-tag>implements</ignore-tag>
+      </ignore-tags>
     </api>
   </version>
+  <setting name="graph.enabled" value="true" />
 </phpdocumentor>
