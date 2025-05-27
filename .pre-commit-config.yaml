@@ -5,11 +5,13 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
+        exclude: docs
       - id: end-of-file-fixer
-        exclude: .phpdoc
+        exclude: (docs|.phpdoc)
       - id: check-json
         exclude: (composer\.lock$|.vscode)
       - id: check-xml
+        exclude: docs
       - id: check-yaml
       - id: check-added-large-files
   - repo: https://github.com/commitizen-tools/commitizen

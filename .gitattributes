@@ -21,5 +21,7 @@
 /.vscode                    export-ignore
 *.png                       export-ignore
 *.svg                       export-ignore
+/.phpdoc/build/cache        export-ignore
 
+/.phpdoc/build/cache/*      binary
 *.php diff=php
