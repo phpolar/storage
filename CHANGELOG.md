@@ -1,3 +1,9 @@
+## 5.1.0 (2025-05-26)
+
+### Fix
+
+- remove redundant namespace sub-level (#80)
+
 ## 5.0.0 (2025-05-26)
 
 ### BREAKING CHANGE
