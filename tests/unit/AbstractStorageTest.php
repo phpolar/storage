@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Phpolar\Phpolar\Storage;
+namespace Phpolar\Storage;
 
-use Phpolar\Phpolar\Storage\LifeCycleHooks;
-use Phpolar\Phpolar\Storage\Tests\Fakes\FakeModel;
+use Phpolar\Storage\LifeCycleHooks;
+use Phpolar\Storage\Tests\Fakes\FakeModel;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\TestDox;

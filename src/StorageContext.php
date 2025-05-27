@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpolar\Phpolar\Storage;
+namespace Phpolar\Storage;
 
 /**
  * Represents a context where data can be stored
