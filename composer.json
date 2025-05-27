@@ -18,12 +18,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Phpolar\\Phpolar\\Storage\\": "src/"
+      "Phpolar\\Storage\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Phpolar\\Phpolar\\Storage\\Tests\\Fakes\\": "tests/__fakes__"
+      "Phpolar\\Storage\\Tests\\Fakes\\": "tests/__fakes__"
     }
   },
   "require": {
