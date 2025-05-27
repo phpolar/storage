@@ -1,160 +1,155 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage",
             "name": "AbstractStorage",
             "summary": "Represents\u0020a\u0020persistence\u0020layer.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method___construct"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method___construct"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003A__destruct\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003A__destruct\u0028\u0029",
             "name": "__destruct",
             "summary": "",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method___destruct"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method___destruct"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003Aclear\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003Aclear\u0028\u0029",
             "name": "clear",
             "summary": "Clears\u0020all\u0020stored\u0020items.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_clear"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_clear"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003AfindKey\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003AfindKey\u0028\u0029",
             "name": "findKey",
             "summary": "Returns\u0020the\u0020key\u0020of\u0020an\u0020item.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_findKey"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_findKey"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003Acount\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003Acount\u0028\u0029",
             "name": "count",
             "summary": "Returns\u0020the\u0020number\u0020of\u0020all\u0020stored\u0020items.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_count"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_count"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003Afind\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003Afind\u0028\u0029",
             "name": "find",
             "summary": "Attempt\u0020to\u0020locate\u0020data\u0020within\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_find"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_find"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003AfindAll\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003AfindAll\u0028\u0029",
             "name": "findAll",
             "summary": "Return\u0020all\u0020items\u0020of\u0020like\u0020type.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_findAll"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_findAll"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003Aremove\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003Aremove\u0028\u0029",
             "name": "remove",
             "summary": "Attempt\u0020to\u0020remove\u0020data\u0020from\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_remove"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_remove"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003Asave\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Add\u0020data\u0020to\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_save"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_save"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\AbstractStorage\u003A\u003Areplace\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\AbstractStorage\u003A\u003Areplace\u0028\u0029",
             "name": "replace",
             "summary": "Replace\u0020data\u0020within\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-AbstractStorage.html#method_replace"
+            "url": "classes/Phpolar-Storage-AbstractStorage.html#method_replace"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\InvalidQueryStateException",
+            "fqsen": "\\Phpolar\\Storage\\InvalidQueryStateException",
             "name": "InvalidQueryStateException",
             "summary": "Represents\u0020the\u0020situation\u0020where\u0020queried\ndata\u0020is\u0020not\u0020found\u0020and\u0020an\u0020alternative\naction\u0020has\u0020not\u0020been\u0020configured.",
-            "url": "classes/Phpolar-Phpolar-Storage-InvalidQueryStateException.html"
+            "url": "classes/Phpolar-Storage-InvalidQueryStateException.html"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\InvalidQueryStateException\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\InvalidQueryStateException\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Phpolar-Phpolar-Storage-InvalidQueryStateException.html#method___construct"
+            "url": "classes/Phpolar-Storage-InvalidQueryStateException.html#method___construct"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\KeyNotFound",
+            "fqsen": "\\Phpolar\\Storage\\KeyNotFound",
             "name": "KeyNotFound",
             "summary": "Represents\u0020the\u0020scenario\u0020when\u0020the\u0020key\u0020of\u0020an\u0020item\u0020is\u0020not\u0020found.",
-            "url": "classes/Phpolar-Phpolar-Storage-KeyNotFound.html"
+            "url": "classes/Phpolar-Storage-KeyNotFound.html"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\LifeCycleHooks",
+            "fqsen": "\\Phpolar\\Storage\\LifeCycleHooks",
             "name": "LifeCycleHooks",
             "summary": "Encapsulates\u0020hooks\u0020that\u0020will\nbe\u0020called\u0020at\u0020life\u0020cylce\u0020intervals",
-            "url": "classes/Phpolar-Phpolar-Storage-LifeCycleHooks.html"
+            "url": "classes/Phpolar-Storage-LifeCycleHooks.html"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\LifeCycleHooks\u003A\u003AonInit\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\LifeCycleHooks\u003A\u003AonInit\u0028\u0029",
             "name": "onInit",
             "summary": "Calls\u0020the\u0020attached\u0020hooks\u0020when\u0020the\u0020storage\nis\u0020initialized",
-            "url": "classes/Phpolar-Phpolar-Storage-LifeCycleHooks.html#method_onInit"
+            "url": "classes/Phpolar-Storage-LifeCycleHooks.html#method_onInit"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\LifeCycleHooks\u003A\u003AonDestroy\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\LifeCycleHooks\u003A\u003AonDestroy\u0028\u0029",
             "name": "onDestroy",
             "summary": "Calls\u0020the\u0020attached\u0020hooks\u0020when\u0020the\u0020storage\nis\u0020destroyed",
-            "url": "classes/Phpolar-Phpolar-Storage-LifeCycleHooks.html#method_onDestroy"
+            "url": "classes/Phpolar-Storage-LifeCycleHooks.html#method_onDestroy"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\Result",
+            "fqsen": "\\Phpolar\\Storage\\Result",
             "name": "Result",
             "summary": "Represents\u0020a\u0020query\u0020for\u0020data\u0020that\u0020may\u0020or\u0020may\u0020not\u0020exist\nin\u0020the\u0020storage\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-Result.html"
+            "url": "classes/Phpolar-Storage-Result.html"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\Result\u003A\u003AnotFound\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003AnotFound\u0028\u0029",
             "name": "notFound",
             "summary": "",
-            "url": "classes/Phpolar-Phpolar-Storage-Result.html#method_notFound"
+            "url": "classes/Phpolar-Storage-Result.html#method_notFound"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\Result\u003A\u003AorElse\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003AorElse\u0028\u0029",
             "name": "orElse",
             "summary": "Configures\u0020an\u0020alternative\u0020action\u0020that\u0020provides\nthe\u0020value\u0020that\u0020should\u0020be\u0020returned\u0020when\nthe\u0020queried\u0020data\u0020does\u0020not\u0020exist\u0020in\u0020storage.",
-            "url": "classes/Phpolar-Phpolar-Storage-Result.html#method_orElse"
+            "url": "classes/Phpolar-Storage-Result.html#method_orElse"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\Result\u003A\u003AtryUnwrap\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003AtryUnwrap\u0028\u0029",
             "name": "tryUnwrap",
             "summary": "One\u0020of\u0020three\u0020behaviors\u0020depending\u0020on\u0020the\u0020internal\u0020state\u003A\n\u0020\u00201.\u0020Provide\u0020the\u0020value\u0020if\u0020it\u0020exists\n\u0020\u00202.\u0020Provide\u0020the\u0020configured\u0020alternative\u0020value\u0020if\u0020the\u0020queried\u0020value\u0020does\u0020not\u0020exist.",
-            "url": "classes/Phpolar-Phpolar-Storage-Result.html#method_tryUnwrap"
+            "url": "classes/Phpolar-Storage-Result.html#method_tryUnwrap"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\Result\u003A\u003Awrap\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003Awrap\u0028\u0029",
             "name": "wrap",
             "summary": "Create\u0020a\u0020result\u0020context\u0020representing\ndata\u0020found\u0020in\u0020storage.",
-            "url": "classes/Phpolar-Phpolar-Storage-Result.html#method_wrap"
+            "url": "classes/Phpolar-Storage-Result.html#method_wrap"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\StorageContext",
+            "fqsen": "\\Phpolar\\Storage\\StorageContext",
             "name": "StorageContext",
             "summary": "Represents\u0020a\u0020context\u0020where\u0020data\u0020can\u0020be\u0020stored\nand\u0020modified.",
-            "url": "classes/Phpolar-Phpolar-Storage-StorageContext.html"
+            "url": "classes/Phpolar-Storage-StorageContext.html"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\StorageContext\u003A\u003Afind\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\StorageContext\u003A\u003Afind\u0028\u0029",
             "name": "find",
             "summary": "Attempt\u0020to\u0020locate\u0020data\u0020within\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-StorageContext.html#method_find"
+            "url": "classes/Phpolar-Storage-StorageContext.html#method_find"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\StorageContext\u003A\u003AfindAll\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\StorageContext\u003A\u003AfindAll\u0028\u0029",
             "name": "findAll",
             "summary": "Return\u0020all\u0020items\u0020of\u0020like\u0020type.",
-            "url": "classes/Phpolar-Phpolar-Storage-StorageContext.html#method_findAll"
+            "url": "classes/Phpolar-Storage-StorageContext.html#method_findAll"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\StorageContext\u003A\u003Aremove\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\StorageContext\u003A\u003Aremove\u0028\u0029",
             "name": "remove",
             "summary": "Attempt\u0020to\u0020remove\u0020data\u0020from\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-StorageContext.html#method_remove"
+            "url": "classes/Phpolar-Storage-StorageContext.html#method_remove"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\StorageContext\u003A\u003Asave\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\StorageContext\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Add\u0020data\u0020to\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-StorageContext.html#method_save"
+            "url": "classes/Phpolar-Storage-StorageContext.html#method_save"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage\\StorageContext\u003A\u003Areplace\u0028\u0029",
+            "fqsen": "\\Phpolar\\Storage\\StorageContext\u003A\u003Areplace\u0028\u0029",
             "name": "replace",
             "summary": "Replace\u0020data\u0020within\u0020the\u0020context.",
-            "url": "classes/Phpolar-Phpolar-Storage-StorageContext.html#method_replace"
+            "url": "classes/Phpolar-Storage-StorageContext.html#method_replace"
         },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\Phpolar\\Phpolar\\Storage",
+            "fqsen": "\\Phpolar\\Storage",
             "name": "Storage",
             "summary": "",
-            "url": "namespaces/phpolar-phpolar-storage.html"
-        },                {
-            "fqsen": "\\Phpolar\\Phpolar",
-            "name": "Phpolar",
-            "summary": "",
-            "url": "namespaces/phpolar-phpolar.html"
+            "url": "namespaces/phpolar-storage.html"
         },                {
             "fqsen": "\\Phpolar",
             "name": "Phpolar",
