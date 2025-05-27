@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpolar\Phpolar\Storage;
+namespace Phpolar\Storage;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\TestDox;

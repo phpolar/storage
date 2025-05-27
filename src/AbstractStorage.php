@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phpolar\Phpolar\Storage;
+namespace Phpolar\Storage;
 
 use Countable;
 
