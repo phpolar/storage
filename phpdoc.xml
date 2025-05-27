@@ -28,5 +28,6 @@
       </ignore-tags>
     </api>
   </version>
-  <setting name="graph.enabled" value="true" />
+  <setting name="graphs.enabled" value="true" />
+  <setting name="guides.enabled" value="true" />
 </phpdocumentor>
