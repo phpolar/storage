@@ -56,6 +56,36 @@ Search.appendIndex(
             "summary": "Replace\u0020data\u0020within\u0020the\u0020context.",
             "url": "classes/Phpolar-Storage-AbstractStorage.html#method_replace"
         },                {
+            "fqsen": "\\Phpolar\\Storage\\Closable",
+            "name": "Closable",
+            "summary": "Provides\u0020resource\u0020closing\u0020functionality.",
+            "url": "classes/Phpolar-Storage-Closable.html"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\Closable\u003A\u003Aclose\u0028\u0029",
+            "name": "close",
+            "summary": "Cleanup\u0020resources.",
+            "url": "classes/Phpolar-Storage-Closable.html#method_close"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\DestroyHook",
+            "name": "DestroyHook",
+            "summary": "Encapsulates\u0020hooks\u0020that\u0020will\nbe\u0020called\u0020during\u0020a\u0020class\u0027s\ndestructure\u0020phase",
+            "url": "classes/Phpolar-Storage-DestroyHook.html"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\DestroyHook\u003A\u003AonDestroy\u0028\u0029",
+            "name": "onDestroy",
+            "summary": "Calls\u0020the\u0020attached\u0020hooks\u0020when\u0020the\u0020storage\nis\u0020destroyed",
+            "url": "classes/Phpolar-Storage-DestroyHook.html#method_onDestroy"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\InitHook",
+            "name": "InitHook",
+            "summary": "Encapsulates\u0020hooks\u0020that\u0020will\nbe\u0020called\u0020when\u0020a\u0020class\u0020is\nconstructed.",
+            "url": "classes/Phpolar-Storage-InitHook.html"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\InitHook\u003A\u003AonInit\u0028\u0029",
+            "name": "onInit",
+            "summary": "Calls\u0020the\u0020attached\u0020hooks\u0020when\u0020the\u0020class\nis\u0020initialized",
+            "url": "classes/Phpolar-Storage-InitHook.html#method_onInit"
+        },                {
             "fqsen": "\\Phpolar\\Storage\\InvalidQueryStateException",
             "name": "InvalidQueryStateException",
             "summary": "Represents\u0020the\u0020situation\u0020where\u0020queried\ndata\u0020is\u0020not\u0020found\u0020and\u0020an\u0020alternative\naction\u0020has\u0020not\u0020been\u0020configured.",
@@ -71,20 +101,25 @@ Search.appendIndex(
             "summary": "Represents\u0020the\u0020scenario\u0020when\u0020the\u0020key\u0020of\u0020an\u0020item\u0020is\u0020not\u0020found.",
             "url": "classes/Phpolar-Storage-KeyNotFound.html"
         },                {
-            "fqsen": "\\Phpolar\\Storage\\LifeCycleHooks",
-            "name": "LifeCycleHooks",
-            "summary": "Encapsulates\u0020hooks\u0020that\u0020will\nbe\u0020called\u0020at\u0020life\u0020cylce\u0020intervals",
-            "url": "classes/Phpolar-Storage-LifeCycleHooks.html"
+            "fqsen": "\\Phpolar\\Storage\\Loadable",
+            "name": "Loadable",
+            "summary": "Supports\u0020loading\u0020data\u0020from\u0020the\u0020storage\u0020context.",
+            "url": "classes/Phpolar-Storage-Loadable.html"
         },                {
-            "fqsen": "\\Phpolar\\Storage\\LifeCycleHooks\u003A\u003AonInit\u0028\u0029",
-            "name": "onInit",
-            "summary": "Calls\u0020the\u0020attached\u0020hooks\u0020when\u0020the\u0020storage\nis\u0020initialized",
-            "url": "classes/Phpolar-Storage-LifeCycleHooks.html#method_onInit"
+            "fqsen": "\\Phpolar\\Storage\\Loadable\u003A\u003Aload\u0028\u0029",
+            "name": "load",
+            "summary": "Load\u0020data\u0020from\u0020the\u0020storage\u0020context\u0020into\u0020memory.",
+            "url": "classes/Phpolar-Storage-Loadable.html#method_load"
         },                {
-            "fqsen": "\\Phpolar\\Storage\\LifeCycleHooks\u003A\u003AonDestroy\u0028\u0029",
-            "name": "onDestroy",
-            "summary": "Calls\u0020the\u0020attached\u0020hooks\u0020when\u0020the\u0020storage\nis\u0020destroyed",
-            "url": "classes/Phpolar-Storage-LifeCycleHooks.html#method_onDestroy"
+            "fqsen": "\\Phpolar\\Storage\\Persistable",
+            "name": "Persistable",
+            "summary": "Supports\u0020persisting\u0020data\u0020into\u0020a\u0020storage\u0020context.",
+            "url": "classes/Phpolar-Storage-Persistable.html"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\Persistable\u003A\u003Apersist\u0028\u0029",
+            "name": "persist",
+            "summary": "Persist\u0020data\u0020into\u0020a\u0020storage\u0020context.",
+            "url": "classes/Phpolar-Storage-Persistable.html#method_persist"
         },                {
             "fqsen": "\\Phpolar\\Storage\\Result",
             "name": "Result",
