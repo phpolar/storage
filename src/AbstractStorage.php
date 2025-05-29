@@ -20,7 +20,7 @@ abstract class AbstractStorage implements StorageContext, Countable
      */
     private array $map = [];
 
-    public function __construct(private readonly LifeCycleHooks $hooks)
+    public function __construct(private readonly InitHook & DestroyHook $hooks)
     {
         $this->hooks->onInit();
     }

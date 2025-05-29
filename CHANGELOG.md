@@ -1,3 +1,13 @@
+## 6.0.0 (2025-05-28)
+
+### BREAKING CHANGE
+
+- LifeCycleHooks has been split into DestroyHook and InitHook interfaces.
+
+### Feat
+
+- add storage context interfaces (#81)
+
 ## 5.1.0 (2025-05-26)
 
 ### Fix
