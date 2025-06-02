@@ -72,12 +72,12 @@ abstract class AbstractStorage implements StorageContext, Countable
      *
      * @SuppressWarnings(PHPMD)
      */
-    public function find(string|int $key): Result
+    public function find(string|int $key): Queryable
     {
         if (array_key_exists($key, $this->map) === false) {
-            return Result::notFound();
+            return new NotFound();
         }
-        return Result::wrap($this->map[$key]);
+        return new Result($this->map[$key]);
     }
 
     public function findAll(): array
@@ -94,12 +94,12 @@ abstract class AbstractStorage implements StorageContext, Countable
      *
      * @SuppressWarnings(PHPMD)
      */
-    public function remove(string|int $key): Result
+    public function remove(string|int $key): Queryable
     {
         if (array_key_exists($key, $this->map) === false) {
-            return Result::notFound();
+            return new NotFound();
         }
-        $result = Result::wrap($this->map[$key]);
+        $result = new Result($this->map[$key]);
         unset($this->map[$key]);
         return $result;
     }
