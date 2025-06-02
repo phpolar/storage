@@ -1,3 +1,13 @@
+## 7.0.0 (2025-06-01)
+
+### BREAKING CHANGE
+
+- The Result class is now invariant.
+
+### Feat
+
+- use the new queryable interface (#82)
+
 ## 6.0.0 (2025-05-28)
 
 ### BREAKING CHANGE
