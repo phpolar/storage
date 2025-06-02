@@ -13,9 +13,9 @@ interface StorageContext
     /**
      * Attempt to locate data within the context.
      *
-     * @return Result<T>
+     * @return Queryable
      */
-    public function find(string|int $key): Result;
+    public function find(string|int $key): Queryable;
 
     /**
      * Return all items of like type.
@@ -27,9 +27,9 @@ interface StorageContext
     /**
      * Attempt to remove data from the context.
      *
-     * @return Result<T>
+     * @return Queryable
      */
-    public function remove(string|int $key): Result;
+    public function remove(string|int $key): Queryable;
 
     /**
      * Add data to the context.

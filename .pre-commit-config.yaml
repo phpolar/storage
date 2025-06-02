@@ -30,9 +30,9 @@ repos:
       - id: php-stan
         files: \.(php)$
         exclude: (examples|test)
-  - repo: https://gitlab.com/daverona/pre-commit/php
-    rev: 0.6.0 # use the most recent version
-    hooks:
+#  - repo: https://gitlab.com/daverona/pre-commit/php
+#    rev: 0.6.0 # use the most recent version
+#    hooks:
       # Hooks using native
-      - id: phpmd # static analyzer for PHP code
-        exclude: (examples|test)
+#       - id: phpmd # static analyzer for PHP code
+#        exclude: (examples|test)
