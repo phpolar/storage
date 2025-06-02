@@ -14,10 +14,7 @@ final class NotFoundTest extends TestCase
     public function testb()
     {
         $alternativeResult = PHP_INT_MAX;
-        $res = new NotFound()
-            ->orElse(
-                static fn() => $alternativeResult
-            );
+        $res = new NotFound()->orElse(static fn() => $alternativeResult);
         $unwrappedValue = $res->tryUnwrap();
         $this->assertSame($unwrappedValue, $alternativeResult);
     }
