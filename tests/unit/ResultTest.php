@@ -14,48 +14,18 @@ final class ResultTest extends TestCase
     public function testa()
     {
         $existingValue = PHP_INT_MIN;
-        $res = Result::wrap($existingValue);
+        $res = new Result($existingValue);
         $unwrappedValue = $res->tryUnwrap();
         $this->assertSame($existingValue, $unwrappedValue);
     }
 
-    #[TestDox("Shall return the return value of the alternative action if queried data does not exist")]
-    public function testb()
+    #[TestDox("Shall not use alternative action when data is found")]
+    public function testf()
     {
-        $alternativeResult = PHP_INT_MAX;
-        $res = Result::notFound()
-            ->orElse(
-                static fn() => $alternativeResult
-            );
+        $existingValue = PHP_INT_MIN;
+        $alternativeActionResult = "SHOULD_NOT_RETURN";
+        $res = new Result($existingValue)->orElse(static fn() => $alternativeActionResult);
         $unwrappedValue = $res->tryUnwrap();
-        $this->assertSame($unwrappedValue, $alternativeResult);
-    }
-
-    #[TestDox("Shall throw and exception when data is not found and an alternative action has not been configured")]
-    public function testc()
-    {
-        $res = Result::notFound();
-        $this->expectException(InvalidQueryStateException::class);
-        $res->tryUnwrap();
-    }
-
-    #[TestDox("Shall not reuse previously wrapped data")]
-    public function testd()
-    {
-        $existingValue = PHP_INT_MIN;
-        $res = Result::notFound();
-        $res::wrap($existingValue);
-        $this->expectException(InvalidQueryStateException::class);
-        $res->tryUnwrap();
-    }
-
-    #[TestDox("Shall create new instance with new query state when calling wrap on 'not found' result")]
-    public function teste()
-    {
-        $existingValue = PHP_INT_MIN;
-        $res = Result::notFound();
-        $newResult = $res::wrap($existingValue);
-        $unwrappedValue = $newResult->tryUnwrap();
-        $this->assertSame($existingValue, $unwrappedValue);
+        $this->assertNotSame($unwrappedValue, $alternativeActionResult);
     }
 }
