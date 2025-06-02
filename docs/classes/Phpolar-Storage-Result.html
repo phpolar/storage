@@ -95,6 +95,9 @@
 
     
     
+            <span class="phpdocumentor-element__implements">
+            implements
+                            <a href="classes/Phpolar-Storage-Queryable.html"><abbr title="\Phpolar\Storage\Queryable">Queryable</abbr></a>                    </span>
     
     </h2>
 
@@ -108,7 +111,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Result.php"><a href="files/result.html">Result.php</a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">11</span>
 
     </aside>
 
@@ -118,20 +121,6 @@ in the storage context.</p>
 
 
 
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/Phpolar-Storage-Result.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">template-covariant</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
 
 
 
@@ -145,6 +134,13 @@ in the storage context.</p>
 
 
 
+    <h4 id="toc-interfaces">
+        Interfaces
+        <a href="classes/Phpolar-Storage-Result.html#toc-interfaces" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Phpolar-Storage-Queryable.html"><abbr title="\Phpolar\Storage\Queryable">Queryable</abbr></a></dt>    </dl>
 
 
 
@@ -159,15 +155,15 @@ in the storage context.</p>
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/Phpolar-Storage-Result.html#method_notFound">notFound()</a>
+    <a class="" href="classes/Phpolar-Storage-Result.html#method___construct">__construct()</a>
     <span>
-                                &nbsp;: <a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, null&gt;    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Phpolar-Storage-Result.html#method_orElse">orElse()</a>
     <span>
-                                &nbsp;: <a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, <abbr title="\Phpolar\Storage\T">T</abbr>&gt;    </span>
+                                &nbsp;: self    </span>
 </dt>
 <dd>Configures an alternative action that provides
 the value that should be returned when
@@ -176,19 +172,11 @@ the queried data does not exist in storage.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/Phpolar-Storage-Result.html#method_tryUnwrap">tryUnwrap()</a>
     <span>
-                                &nbsp;: <abbr title="\Phpolar\Storage\T">T</abbr>|null    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd>One of three behaviors depending on the internal state:
   1. Provide the value if it exists
   2. Provide the configured alternative value if the queried value does not exist.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/Phpolar-Storage-Result.html#method_wrap">wrap()</a>
-    <span>
-                                &nbsp;: <a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>Create a result context representing
-data found in storage.</dd>
 
     </dl>
 
@@ -208,39 +196,45 @@ data found in storage.</dd>
         class="phpdocumentor-element
             -method
             -public
-                                    -static                    "
+                                                        "
 >
-    <h4 class="phpdocumentor-element__name" id="method_notFound">
-        notFound()
-        <a href="classes/Phpolar-Storage-Result.html#method_notFound" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/Phpolar-Storage-Result.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Result.php"><a href="files/result.html">Result.php</a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">notFound</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, null&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
-    
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$data</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
 
     
 
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, null&gt;</span>
-            </section>
+    
 
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -256,7 +250,7 @@ data found in storage.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Result.php"><a href="files/result.html">Result.php</a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -266,7 +260,7 @@ the queried data does not exist in storage.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">orElse</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$alternativeAction</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, <abbr title="\Phpolar\Storage\T">T</abbr>&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">orElse</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$alternativeAction</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -276,8 +270,8 @@ the queried data does not exist in storage.</p>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$alternativeAction</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr></span>
-                            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr>|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -289,7 +283,7 @@ the queried data does not exist in storage.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, <abbr title="\Phpolar\Storage\T">T</abbr>&gt;</span>
+        <span class="phpdocumentor-signature__response_type">self</span>
             </section>
 
 </article>
@@ -307,7 +301,7 @@ the queried data does not exist in storage.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Result.php"><a href="files/result.html">Result.php</a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">54</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -317,7 +311,7 @@ the queried data does not exist in storage.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">tryUnwrap</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Phpolar\Storage\T">T</abbr>|null</span></code>
+                    <span class="phpdocumentor-signature__name">tryUnwrap</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -330,79 +324,10 @@ configured.</li>
 
     
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/Phpolar-Storage-Result.html#method_tryUnwrap#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/Phpolar-Storage-InvalidQueryStateException.html"><abbr title="\Phpolar\Storage\InvalidQueryStateException">InvalidQueryStateException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><abbr title="\Phpolar\Storage\T">T</abbr>|null</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_wrap">
-        wrap()
-        <a href="classes/Phpolar-Storage-Result.html#method_wrap" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Result.php"><a href="files/result.html">Result.php</a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">69</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Create a result context representing
-data found in storage.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">wrap</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$val</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, mixed&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$val</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
 
     
 
     
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><a href="classes/Phpolar-Storage-Result.html"><abbr title="\Phpolar\Storage\Result">Result</abbr></a>&lt;string|int, mixed&gt;</span>
-            </section>
-
 </article>
             </section>
 
@@ -517,10 +442,9 @@ data found in storage.</p>
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/Phpolar-Storage-Result.html#method_notFound">notFound()</a></li>
+                                            <li class=""><a href="classes/Phpolar-Storage-Result.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/Phpolar-Storage-Result.html#method_orElse">orElse()</a></li>
                                             <li class=""><a href="classes/Phpolar-Storage-Result.html#method_tryUnwrap">tryUnwrap()</a></li>
-                                            <li class=""><a href="classes/Phpolar-Storage-Result.html#method_wrap">wrap()</a></li>
                                     </ul>
             </li>
                     </ul>

@@ -111,6 +111,26 @@ Search.appendIndex(
             "summary": "Load\u0020data\u0020from\u0020the\u0020storage\u0020context\u0020into\u0020memory.",
             "url": "classes/Phpolar-Storage-Loadable.html#method_load"
         },                {
+            "fqsen": "\\Phpolar\\Storage\\NotFound",
+            "name": "NotFound",
+            "summary": "",
+            "url": "classes/Phpolar-Storage-NotFound.html"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\NotFound\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Phpolar-Storage-NotFound.html#method___construct"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\NotFound\u003A\u003AtryUnwrap\u0028\u0029",
+            "name": "tryUnwrap",
+            "summary": "One\u0020of\u0020three\u0020behaviors\u0020depending\u0020on\u0020the\u0020internal\u0020state\u003A\n\u0020\u00201.\u0020Provide\u0020the\u0020value\u0020if\u0020it\u0020exists\n\u0020\u00202.\u0020Provide\u0020the\u0020configured\u0020alternative\u0020value\u0020if\u0020the\u0020queried\u0020value\u0020does\u0020not\u0020exist.",
+            "url": "classes/Phpolar-Storage-NotFound.html#method_tryUnwrap"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\NotFound\u003A\u003AorElse\u0028\u0029",
+            "name": "orElse",
+            "summary": "Configures\u0020an\u0020alternative\u0020action\u0020that\u0020provides\nthe\u0020value\u0020that\u0020should\u0020be\u0020returned\u0020when\nthe\u0020queried\u0020data\u0020does\u0020not\u0020exist\u0020in\u0020storage.",
+            "url": "classes/Phpolar-Storage-NotFound.html#method_orElse"
+        },                {
             "fqsen": "\\Phpolar\\Storage\\Persistable",
             "name": "Persistable",
             "summary": "Supports\u0020persisting\u0020data\u0020into\u0020a\u0020storage\u0020context.",
@@ -121,15 +141,30 @@ Search.appendIndex(
             "summary": "Persist\u0020data\u0020into\u0020a\u0020storage\u0020context.",
             "url": "classes/Phpolar-Storage-Persistable.html#method_persist"
         },                {
+            "fqsen": "\\Phpolar\\Storage\\Queryable",
+            "name": "Queryable",
+            "summary": "",
+            "url": "classes/Phpolar-Storage-Queryable.html"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\Queryable\u003A\u003AorElse\u0028\u0029",
+            "name": "orElse",
+            "summary": "Configures\u0020an\u0020alternative\u0020action\u0020that\u0020provides\nthe\u0020value\u0020that\u0020should\u0020be\u0020returned\u0020when\nthe\u0020queried\u0020data\u0020does\u0020not\u0020exist\u0020in\u0020storage.",
+            "url": "classes/Phpolar-Storage-Queryable.html#method_orElse"
+        },                {
+            "fqsen": "\\Phpolar\\Storage\\Queryable\u003A\u003AtryUnwrap\u0028\u0029",
+            "name": "tryUnwrap",
+            "summary": "One\u0020of\u0020three\u0020behaviors\u0020depending\u0020on\u0020the\u0020internal\u0020state\u003A\n\u0020\u00201.\u0020Provide\u0020the\u0020value\u0020if\u0020it\u0020exists\n\u0020\u00202.\u0020Provide\u0020the\u0020configured\u0020alternative\u0020value\u0020if\u0020the\u0020queried\u0020value\u0020does\u0020not\u0020exist.",
+            "url": "classes/Phpolar-Storage-Queryable.html#method_tryUnwrap"
+        },                {
             "fqsen": "\\Phpolar\\Storage\\Result",
             "name": "Result",
             "summary": "Represents\u0020a\u0020query\u0020for\u0020data\u0020that\u0020may\u0020or\u0020may\u0020not\u0020exist\nin\u0020the\u0020storage\u0020context.",
             "url": "classes/Phpolar-Storage-Result.html"
         },                {
-            "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003AnotFound\u0028\u0029",
-            "name": "notFound",
+            "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
             "summary": "",
-            "url": "classes/Phpolar-Storage-Result.html#method_notFound"
+            "url": "classes/Phpolar-Storage-Result.html#method___construct"
         },                {
             "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003AorElse\u0028\u0029",
             "name": "orElse",
@@ -140,11 +175,6 @@ Search.appendIndex(
             "name": "tryUnwrap",
             "summary": "One\u0020of\u0020three\u0020behaviors\u0020depending\u0020on\u0020the\u0020internal\u0020state\u003A\n\u0020\u00201.\u0020Provide\u0020the\u0020value\u0020if\u0020it\u0020exists\n\u0020\u00202.\u0020Provide\u0020the\u0020configured\u0020alternative\u0020value\u0020if\u0020the\u0020queried\u0020value\u0020does\u0020not\u0020exist.",
             "url": "classes/Phpolar-Storage-Result.html#method_tryUnwrap"
-        },                {
-            "fqsen": "\\Phpolar\\Storage\\Result\u003A\u003Awrap\u0028\u0029",
-            "name": "wrap",
-            "summary": "Create\u0020a\u0020result\u0020context\u0020representing\ndata\u0020found\u0020in\u0020storage.",
-            "url": "classes/Phpolar-Storage-Result.html#method_wrap"
         },                {
             "fqsen": "\\Phpolar\\Storage\\StorageContext",
             "name": "StorageContext",
