@@ -6,7 +6,7 @@
   "require-dev": {
     "ext-ast": "*",
     "ext-openssl": "*",
-    "phan/phan": "^5.4",
+    "phan/phan": "^5.4 || ^6.0",
     "php-coveralls/php-coveralls": "^2.7.0",
     "phpmd/phpmd": "^2.15.0",
     "phpstan/phpstan": "^1.9 || ^2.0",
